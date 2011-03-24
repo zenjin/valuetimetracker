@@ -12,10 +12,9 @@ var RUNTESTS = true;
 
 // -------------------------------------------------------------------------- //
 
-// this sets the background color of the master UIView (when there are no windows/tab groups on it)
-Titanium.UI.setBackgroundColor('#000');
-
 if (RUNTESTS) {
+	//var TEST_SUITE = 'core'; // Unit Tests
+	//var TEST_SUITE = ''; // Graphical Test
 	Ti.include('/tests/run.js');
 } else {
 	Ti.include('/app/app.js');
