@@ -13,32 +13,21 @@ var RUNTESTS = true;
 // -------------------------------------------------------------------------- //
 
 if (RUNTESTS) {
+	// Test Suite must refer to a filename which must be the same as the
+	// suite's name
 	var TEST_SUITE = 'core'; // Unit Tests
-	//var TEST_SUITE = ''; // Graphical Test
-	var win = Ti.UI.createWindow();
-	//win.add(Ti.UI.createImageView({image:'helium.png', height:'auto', width:'auto'}));
-	win.add(Ti.UI.createLabel({
-		text:'Unit tests in progress - check the console for details.',
-		color:'#787878',
-		bottom:20,
-		right:10,
-		left:10,
-		font:{fontSize:12},
-		height:'auto',
-		textAlign:'center'
-	}));
-	win.open();
-
-	//Include tests
+	//var TEST_SUITE = 'ui';   // Graphical Test
+	//var TEST_SUITE = 'test'; // Misc.
+	//var TEST_SUITE = '';     // defaults to: Graphical Test
+	
+	//Include test environment
 	Ti.include(
+		'/test/views/main.js',
 		'/helium.js',
-		'/tests/test.js',
-		'/tests/core.js',
-		'/tests/ui.js'
+		['/test/suites/', TEST_SUITE, '.js'].join("") // include test suite
 	);
-	var suite = (typeof(TEST_SUITE)!='undefined') ? TEST_SUITE : '';
-	he.test.run(suite);
-
+	
+	he.test.run(TEST_SUITE);
 } else {
 	Ti.include('/app/app.js');
 }
